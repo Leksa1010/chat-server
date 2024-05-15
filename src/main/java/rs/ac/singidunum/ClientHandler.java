@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class ClientHandler implements Runnable {
 
@@ -38,8 +39,12 @@ public class ClientHandler implements Runnable {
                 // Send message to everyone
                 send(name + ": " + received);
 
+            } catch (SocketException se) {
+                System.out.println(se.getClass().getName() + ": " + se.getMessage());
+                disconnect();
+                break;
             } catch (IOException ex) {
-
+                System.out.println("Communication error: " + ex.getMessage());
             }
         }
     }
