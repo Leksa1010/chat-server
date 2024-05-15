@@ -29,7 +29,7 @@ public class Main {
                 System.out.println("Client " + name + " connected.");
             }
         } catch (IOException ex) {
-            System.out.println("Doslo je do greske");
+            System.out.println("An error occured.");
         }
     }
 }
